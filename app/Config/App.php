@@ -6,6 +6,11 @@ use CodeIgniter\Config\BaseConfig;
 
 class App extends BaseConfig
 {
+    public $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'; // ou 'CodeIgniter\Session\Handlers\DatabaseHandler'
+    public $sessionCookieName = 'ci_session';
+    public $sessionExpiration = 7200;
+    public $sessionSavePath = WRITEPATH . 'session'; // Pour les sessions basées sur fichiers
+
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
@@ -40,7 +45,7 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------

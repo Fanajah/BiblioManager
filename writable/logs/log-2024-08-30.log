@@ -1,0 +1,95 @@
+ERROR - 2024-08-30 19:15:30 --> Error connecting to the database: mysqli_sql_exception: Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON) in C:\wamp64\www\BiblioManager\system\Database\MySQLi\Connection.php:187
+Stack trace:
+#0 C:\wamp64\www\BiblioManager\system\Database\MySQLi\Connection.php(187): mysqli->real_connect('localhost', '', '', '', 3306, '', 0)
+#1 C:\wamp64\www\BiblioManager\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\wamp64\www\BiblioManager\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\wamp64\www\BiblioManager\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\wamp64\www\BiblioManager\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\BiblioManager\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\BiblioManager\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\BiblioManager\app\Controllers\Register.php(27): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\BiblioManager\system\CodeIgniter.php(933): App\Controllers\Register->process()
+#9 C:\wamp64\www\BiblioManager\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+#10 C:\wamp64\www\BiblioManager\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\BiblioManager\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\wamp64\www\BiblioManager\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\wamp64\www\BiblioManager\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\wamp64\www\BiblioManager\system\rewrite.php(44): require_once('C:\\wamp64\\www\\B...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON) in C:\wamp64\www\BiblioManager\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\wamp64\www\BiblioManager\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\wamp64\www\BiblioManager\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\wamp64\www\BiblioManager\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#3 C:\wamp64\www\BiblioManager\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#4 C:\wamp64\www\BiblioManager\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#5 C:\wamp64\www\BiblioManager\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#6 C:\wamp64\www\BiblioManager\app\Controllers\Register.php(27): CodeIgniter\Model->insert(Array)
+#7 C:\wamp64\www\BiblioManager\system\CodeIgniter.php(933): App\Controllers\Register->process()
+#8 C:\wamp64\www\BiblioManager\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+#9 C:\wamp64\www\BiblioManager\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\BiblioManager\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\BiblioManager\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\wamp64\www\BiblioManager\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\wamp64\www\BiblioManager\system\rewrite.php(44): require_once('C:\\wamp64\\www\\B...')
+#14 {main}
+CRITICAL - 2024-08-30 19:15:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+[Method: POST, Route: register/process]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name:, :email:, :password:)', [...], false)
+ 3 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 4 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 5 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 6 APPPATH\Controllers\Register.php(27): CodeIgniter\Model->insert([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Register->process()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\BiblioManager\\public\\index.php')
+INFO - 2024-08-30 19:18:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 19:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 19:44:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 19:49:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-30 19:56:37 --> ErrorException: Array to string conversion
+[Method: POST, Route: login/process]
+in APPPATH\Views\login.php on line 12.
+ 1 APPPATH\Views\login.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\BiblioManager\\app\\Views\\login.php', 12)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\BiblioManager\\app\\Views\\login.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('login', [], true)
+ 5 APPPATH\Controllers\Login.php(35): view('login', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->process()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\BiblioManager\\public\\index.php')
+CRITICAL - 2024-08-30 20:06:57 --> ErrorException: Undefined variable $password
+[Method: POST, Route: register/process]
+in APPPATH\Controllers\Register.php on line 19.
+ 1 APPPATH\Controllers\Register.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $password', 'C:\\wamp64\\www\\BiblioManager\\app\\Controllers\\Register.php', 19)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Register->process()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\BiblioManager\\public\\index.php')
+INFO - 2024-08-30 20:08:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:18:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:20:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:24:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:26:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:27:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:28:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:29:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-30 20:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -10,17 +10,25 @@
 <body>
     <div class="container mt-5">
         <h2>Se Connecter</h2>
-        <form action="<?= site_url('login/process') ?>" method="post">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+        
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error') ?>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+        <?php endif; ?>
+
+        <form action="<?= site_url('login/process') ?>" method="post">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+                <label for="password">Mot de passe</label>
             </div>
             <button type="submit" class="btn btn-primary">Se Connecter</button>
         </form>
+        <a href="/" class="btn btn-secondary mt-3">Retour</a>
     </div>
 </body>
 </html>
