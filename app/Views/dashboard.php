@@ -81,14 +81,52 @@
                         <td><?= $book['published_year'] ?></td>
                         <td><?= $book['stock'] ?></td>
                         <td>
-                            <a href="#" class="btn btn-info btn-sm text-white fw-bold">Visualiser</a>
-                            <a href="#" class="btn btn-success btn-sm text-white fw-bold">Emprunter</a>
+                            <button type="button" class="btn btn-info btn-sm text-white fw-bold" data-bs-toggle="modal" data-bs-target="#bookModal" data-title="<?= esc($book['title']) ?>" data-description="<?= esc($book['description']) ?>">
+                                Visualiser
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm text-white fw-bold">Emprunter</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
+
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="bookModalLabel">Détails du Livre</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h5 id="modalTitle"></h5>
+            <p id="modalDescription"></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var bookModal = document.getElementById('bookModal');
+            bookModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Bouton cliqué pour ouvrir le modal
+            var title = button.getAttribute('data-title'); // Extraire le titre
+            var description = button.getAttribute('data-description'); // Extraire la description
+
+            var modalTitle = bookModal.querySelector('#modalTitle');
+            var modalDescription = bookModal.querySelector('#modalDescription');
+
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            });
+        });
+    </script>
+
 
     <script src="<?= base_url('bootstrap_5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
 </body>
