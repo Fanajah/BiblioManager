@@ -84,7 +84,11 @@
                             <button type="button" class="btn btn-info btn-sm text-white fw-bold" data-bs-toggle="modal" data-bs-target="#bookModal" data-title="<?= esc($book['title']) ?>" data-author="<?= esc($book['author']) ?>" data-description="<?= esc($book['description']) ?>">
                                 Visualiser
                             </button>
-                            <a href="<?= site_url('borrow/' . $book['id']) ?>" class="btn btn-success btn-sm text-white fw-bold">Emprunter</a>
+                            <?php if ($book['stock'] > 0): ?>
+                                <a href="<?= site_url('borrow/' . $book['id']) ?>" class="btn btn-success btn-sm text-white fw-bold">Emprunter</a>
+                            <?php else: ?>
+                                <button class="btn btn-secondary btn-sm text-white fw-bold" disabled>Rupture de stock</button>
+                            <?php endif; ?>    
                         </td>
                     </tr>
                 <?php endforeach; ?>

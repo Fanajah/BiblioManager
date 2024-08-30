@@ -48,6 +48,7 @@
                             <p class="card-text"><strong>Année de publication:</strong> <?= $book['published_year'] ?></p>
                             <p class="card-text"><strong>Description:</strong> <?= strlen($book['description']) > 100 ? substr($book['description'], 0, 100) . '...' : $book['description'] ?></p>
                             <p class="card-text"><small class="text-muted">Date d'échéance : <?= date('d-m-Y', strtotime($book['due_date'])) ?></small></p>
+                            <a href="<?= site_url('book/return/' . $book['book_id']) ?>" class="btn btn-danger">Rendre</a>
                         </div>
                     </div>
                 </div>
