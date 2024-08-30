@@ -26,8 +26,8 @@
                         <a class="nav-link" href="/logout">Se déconnecter</a>
                     </li>
                 </ul>
-                <form class="d-flex ms-auto" action="#" method="get">
-                    <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+                <form class="d-flex ms-auto" action="<?= site_url('dashboard') ?>" method="get">
+                    <input class="form-control me-2" type="search" name="search" placeholder="Rechercher" aria-label="Search" value="<?= esc($search) ?>">
                     <button class="btn btn-outline-light" type="submit">Rechercher</button>
                 </form>
             </div>
@@ -37,16 +37,26 @@
     <!-- Contenu principal -->
     <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-between mb-3">
-            <!-- Exemple de menu déroulant -->
-            <select class="form-select w-auto" aria-label="Tri des livres">
-                <option selected>Trier par</option>
-                <option value="1">ID</option>
-                <option value="2">Titre</option>
-                <option value="3">Type</option>
-                <option value="4">Auteur</option>
-                <option value="5">Année de publication</option>
-                <option value="6">Stock</option>
-            </select>
+            <!-- Indication "Tri" et menus déroulants pour trier les livres -->
+            <div class="d-flex align-items-center">
+                <span class="me-2">Tri :</span>
+                <form action="<?= site_url('dashboard') ?>" method="get" class="d-flex">
+                    <input type="hidden" name="search" value="<?= esc($search) ?>">
+                    <select class="form-select me-2" name="sort" aria-label="Tri des livres" onchange="this.form.submit()">
+                        <option value="" disabled selected>Trier par</option>
+                        <option value="1" <?= $sort === '1' ? 'selected' : '' ?>>ID</option>
+                        <option value="2" <?= $sort === '2' ? 'selected' : '' ?>>Titre</option>
+                        <option value="3" <?= $sort === '3' ? 'selected' : '' ?>>Type</option>
+                        <option value="4" <?= $sort === '4' ? 'selected' : '' ?>>Auteur</option>
+                        <option value="5" <?= $sort === '5' ? 'selected' : '' ?>>Année de publication</option>
+                        <option value="6" <?= $sort === '6' ? 'selected' : '' ?>>Stock</option>
+                    </select>
+                    <select class="form-select" name="direction" aria-label="Direction du tri" onchange="this.form.submit()">
+                        <option value="asc" <?= $direction === 'asc' ? 'selected' : '' ?>>Croissant</option>
+                        <option value="desc" <?= $direction === 'desc' ? 'selected' : '' ?>>Décroissant</option>
+                    </select>
+                </form>
+            </div>
         </div>
 
         <table class="table table-striped table-hover">
