@@ -12,5 +12,5 @@ $routes->get('/register', 'Register::index');  // Affiche la page d'inscription
 $routes->post('/register/process', 'Register::process');  // Traite le formulaire d'inscription
 $routes->get('/logout', 'Login::logout');  // Route pour la déconnexion
 $routes->get('/dashboard', 'Dashboard::index'); // Assure-toi que ce contrôleur et méthode existent
-
-
+$routes->get('borrow/(:num)', 'BookController::borrow/$1');
+$routes->get('my_books', 'BookController::myBooks');

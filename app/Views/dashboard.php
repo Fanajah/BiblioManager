@@ -17,10 +17,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Books</a>
+                        <a class="nav-link" href="<?= site_url('my_books') ?>"><?= session()->get('user')['name'] ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Se déconnecter</a>
@@ -81,10 +81,10 @@
                         <td><?= $book['published_year'] ?></td>
                         <td><?= $book['stock'] ?></td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm text-white fw-bold" data-bs-toggle="modal" data-bs-target="#bookModal" data-title="<?= esc($book['title']) ?>" data-description="<?= esc($book['description']) ?>">
+                            <button type="button" class="btn btn-info btn-sm text-white fw-bold" data-bs-toggle="modal" data-bs-target="#bookModal" data-title="<?= esc($book['title']) ?>" data-author="<?= esc($book['author']) ?>" data-description="<?= esc($book['description']) ?>">
                                 Visualiser
                             </button>
-                            <button type="button" class="btn btn-success btn-sm text-white fw-bold">Emprunter</button>
+                            <a href="<?= site_url('borrow/' . $book['id']) ?>" class="btn btn-success btn-sm text-white fw-bold">Emprunter</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -93,21 +93,22 @@
     </div>
 
     <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="bookModalLabel">Détails du Livre</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalLabel">
+                <span id="modalTitle"></span> (<span id="modalAuthor"></span>)
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <h5 id="modalTitle"></h5>
-            <p id="modalDescription"></p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        </div>
-        </div>
-    </div>
     </div>
 
     <script>
@@ -116,17 +117,19 @@
             bookModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget; // Bouton cliqué pour ouvrir le modal
             var title = button.getAttribute('data-title'); // Extraire le titre
+            var author = button.getAttribute('data-author'); // Extraire l'auteur
             var description = button.getAttribute('data-description'); // Extraire la description
 
             var modalTitle = bookModal.querySelector('#modalTitle');
+            var modalAuthor = bookModal.querySelector('#modalAuthor');
             var modalDescription = bookModal.querySelector('#modalDescription');
 
             modalTitle.textContent = title;
+            modalAuthor.textContent = author;
             modalDescription.textContent = description;
             });
         });
     </script>
-
 
     <script src="<?= base_url('bootstrap_5.0.2/js/bootstrap.bundle.min.js') ?>"></script>
 </body>
